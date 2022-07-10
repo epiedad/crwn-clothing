@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { auth } from '../../firebase/firebase.utils';
 
@@ -28,5 +29,8 @@ const Header = ({ currentUser }) => (
 		</div>
 	</div>
 )
+const napStateToProps = state => ({
+	currentUser: state.user.currentUser
+});
 
-export default Header
+export default connect(napStateToProps)(Header)
