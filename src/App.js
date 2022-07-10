@@ -40,6 +40,7 @@ class App extends React.Component {
         <Header />
         <Routes>
           <Route exact path='/' element={<HomePage />} />
+          <Route path='/' element={this.props.currentUser ? <Navigate to="/" replace={true} /> : <SignInAndSignUpPage />} />
           <Route path='/shop' element={<ShopPage />} />
           <Route exact path='/signin' element={this.props.currentUser ? <Navigate to="/" replace={true} /> : <SignInAndSignUpPage />}
           />
@@ -49,8 +50,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = state => ({
+	currentUser: state.user.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
